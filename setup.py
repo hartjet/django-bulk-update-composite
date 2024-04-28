@@ -20,7 +20,7 @@ if sys.argv[-1] == 'tag':
     sys.exit()
 
 setup(
-    name='django-bulk-update',
+    name='django-bulk-update-composite',
     version=version,
     packages=find_packages(),
     include_package_data=True,
