@@ -208,6 +208,7 @@ def bulk_update(objs, meta=None, update_fields=None, exclude_fields=None,
             dbtable=dbtable,
             values=values,
             in_clause=in_clause,
+            extra_clauses=extra_clauses
         )
         del values
 
