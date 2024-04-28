@@ -114,7 +114,7 @@ def get_fields(update_fields, exclude_fields, meta, obj=None):
 
 
 def bulk_update(objs, meta=None, update_fields=None, exclude_fields=None,
-                using='default', batch_size=None, pk_field='pk'):
+                using='default', batch_size=None, pk_field='pk', extra_clauses=''):
     assert batch_size is None or batch_size > 0
 
     # force to retrieve objs from the DB at the beginning,
@@ -204,7 +204,7 @@ def bulk_update(objs, meta=None, update_fields=None, exclude_fields=None,
             pks=', '.join(itertools.repeat('%s', n_pks)),
         )
 
-        sql = 'UPDATE {dbtable} SET {values} WHERE {in_clause}'.format(
+        sql = 'UPDATE {dbtable} SET {values} WHERE {extra_clauses}{in_clause}'.format(
             dbtable=dbtable,
             values=values,
             in_clause=in_clause,
